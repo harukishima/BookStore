@@ -33,7 +33,7 @@ void HoaDon::setTien(int tien)
 
 void HoaDon::taoHoaDon(ListSach l, string tensach, int soluong)
 {
-	 mSach = l.findBook(tensach);
+	 mSach = *l.findBook(tensach);
 	 if (mSach.fGetID() == "")
 	 {
 		 cout << "Khong tim thay sach" << endl;
@@ -51,7 +51,7 @@ void HoaDon::taoHoaDon(ListSach l)
 	int soluong;
 	cout << "So luong: ";
 	cin >> soluong;
-	mSach = l.findBook(tensach);
+	mSach = *l.findBook(tensach);
 	if (mSach.fGetID() == "")
 	{
 		cout << "Khong tim thay sach" << endl;

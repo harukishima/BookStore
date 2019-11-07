@@ -106,17 +106,17 @@ void ListSach::fTim1Sach(int it)
 	}
 }
 
-Sach ListSach::findBook(string ten)
+Sach* ListSach::findBook(string ten)
 {
 	vector<Sach>::iterator it;
 	int count = 0;
-	Sach tmp;
+	Sach *tmp = NULL;
 	for (it = LIST.begin(); it != LIST.end(); ++it)
 	{
 		if (it->fGetName() == ten)
 		{
 			count++;
-			tmp = *it;
+			tmp = &(*it);
 		}
 	}
 	if (count > 1)
@@ -131,7 +131,7 @@ Sach ListSach::findBook(string ten)
 			if (it->fGetID() == ms)
 			{
 				count++;
-				tmp = *it;
+				tmp = &(*it);
 			}
 		}
 	}

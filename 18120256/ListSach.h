@@ -12,7 +12,7 @@ public:
 	void fXuatListSach();
 	void fTimSach(string);
 	void fTim1Sach(int it);
-	Sach findBook(string);
+	Sach* findBook(string);
 	void fXoaSach(int i);
 	void fXoaTatCa();
 	void fThemSach(Sach);

@@ -9,12 +9,13 @@
 class User :
 	public Guest
 {
-private:
+protected:
 	string mName;
 	string mPass;
+	int mType = 1;
+private:
 	int mAge;
 	MangHoaDon mHoadon;
-	int mType = 1;
 public:
 	User();
 	virtual ~User();
