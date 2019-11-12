@@ -58,6 +58,16 @@ void Sach::fSetGia(int giasach)
 	this->GIASACH = giasach;
 }
 
+void Sach::fSetTacGia(string tacgia)
+{
+	TACGIA = tacgia;
+}
+
+void Sach::fSetNXB(string nxb)
+{
+	NXB = nxb;
+}
+
 //void Sach::fSetTacGia(string tacgia)
 //{
 //	TACGIA = tacgia;
@@ -86,6 +96,16 @@ string Sach::fGetID()
 string Sach::fGetName()
 {
 	return this->TENSACH;
+}
+
+string Sach::fGetTacGia()
+{
+	return TACGIA;
+}
+
+string Sach::fGetNXB()
+{
+	return NXB;
 }
 
 //string Sach::fGetTacGia()

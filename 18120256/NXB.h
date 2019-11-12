@@ -3,8 +3,9 @@
 
 #include"ListSach.h"
 #include"User.h"
+#include"Account.h"
 
-class NXB : public User
+class NXB : public Account
 {
 private:
 	vector<Sach*> list;

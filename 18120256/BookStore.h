@@ -5,6 +5,7 @@
 #include"ListSach.h"
 #include"Guest.h"
 #include"User.h"
+#include"Account.h"
 #include<fstream>
 #include<vector>
 #include<sstream>
@@ -30,7 +31,7 @@ public:
 	void loadBookList(const string&);
 	User splitUserLine(string, char);
 	Sach splitBookLine(string, char);
-	void guessFunction(int);
+	void guestFunction(int);
 	void userFunction(int);
 	void dangNhap();
 };

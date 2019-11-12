@@ -22,17 +22,17 @@ void BookStore::run()
 		{
 			menu.guessMenu();
 			cin >> cmd;
-			guessFunction(cmd);
+			guestFunction(cmd);
 		}
 		else
 		{
-			if (type == 1)
+			if (curU->getType() == 1)
 			{
 				menu.userMenu();
 				cin >> cmd;
 				userFunction(cmd);
 			}
-			else if (type == 0)
+			else if (curU->getType() == 0)
 			{
 				menu.adminMenu();
 				cin >> cmd;
@@ -83,13 +83,14 @@ User BookStore::splitUserLine(string line, char delim)
 	stringstream str(line);
 	User u; string tmp;
 	getline(str, tmp, delim);
+	u.setType(stod(tmp));
+	getline(str, tmp, delim);
 	u.setName(tmp);
 	getline(str, tmp, delim);
 	u.setPass(tmp);
 	getline(str, tmp, delim);
 	u.setAge(stod(tmp));
-	getline(str, tmp, delim);
-	u.setType(stod(tmp));
+
 	return u;
 }
 
@@ -103,10 +104,14 @@ Sach BookStore::splitBookLine(string line, char delim)
 	s.fSetName(tmp);
 	getline(str, tmp, delim);
 	s.fSetGia(stod(tmp));
+	getline(str, tmp, delim);
+	s.fSetNXB(tmp);
+	getline(str, tmp, delim);
+	s.fSetTacGia(tmp);
 	return s;
 }
 
-void BookStore::guessFunction(int cmd)
+void BookStore::guestFunction(int cmd)
 {
 	string tmp;
 	switch (cmd)

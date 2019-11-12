@@ -11,45 +11,21 @@ User::~User()
 {
 }
 
-void User::setName(string& name)
-{
-	mName = name;
-}
 
-void User::setPass(string& pass)
-{
-	mPass = pass;
-}
 
 void User::setAge(const int& age)
 {
 	mAge = age;
 }
 
-void User::setType(const int& type)
-{
-	mType = type;
-}
 
-string User::getName()
-{
-	return mName;
-}
-
-string User::getPass()
-{
-	return mPass;
-}
 
 int User::getAge()
 {
 	return mAge;
 }
 
-int User::getType()
-{
-	return mType;
-}
+
 
 void User::muaSach(ListSach& ke)
 {

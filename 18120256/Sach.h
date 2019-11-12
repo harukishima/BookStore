@@ -8,8 +8,8 @@ class Sach
 private:
 	string ID;
 	string TENSACH;
-	//string TACGIA;
-	//string NXB;
+	string TACGIA = "";
+	string NXB = "";
 	int GIASACH;
 public:
 	Sach();
@@ -21,13 +21,13 @@ public:
 	void fSetID(string id);
 	void fSetName(string tensach);
 	void fSetGia(int giasach);
-	//void fSetTacGia(string tacgia);
-	//void fSetNXB(string nxb);
+	void fSetTacGia(string tacgia);
+	void fSetNXB(string nxb);
 	void fNhapSach();
 	string fGetID();
 	string fGetName();
-	//string fGetTacGia();
-	//string fGetNXB();
+	string fGetTacGia();
+	string fGetNXB();
 	int fGetGia();
 
 };

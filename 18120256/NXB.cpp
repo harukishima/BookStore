@@ -23,6 +23,7 @@ void NXB::themSach(ListSach& Ke)
 		return;
 	}
 	list.push_back(tmp);
+	tmp->fSetNXB(this->getName());
 }
 
 void NXB::xoaSach()
@@ -43,7 +44,10 @@ void NXB::xoaSach()
 		}
 	}
 	if (count == 1)
+	{
 		list.erase(xoa);
+		(*xoa)->fSetNXB("");
+	}
 	if (count > 1)
 	{
 		string id;
@@ -53,6 +57,7 @@ void NXB::xoaSach()
 			if ((*it)->fGetID() == id)
 			{
 				list.erase(it);
+				(*it)->fSetNXB("");
 			}
 		}
 	}
