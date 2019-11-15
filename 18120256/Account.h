@@ -7,16 +7,20 @@ using namespace std;
 class Account
 {
 protected:
-	string mName;
+	string mUsername;
 	string mPass;
+	string mName;
 	int mType;
 public:
-	void setName(string&);
+	Account();
+	void setUsername(string&);
 	void setPass(string&);
 	void setType(const int&);
-	string getName();
+	void setName(string&);
+	string getUsername();
 	string getPass();
 	int getType();
+	string getName();
 };
 
 

@@ -5,12 +5,12 @@ BookStore::BookStore()
 	isRun = true;
 	isLogged = false;
 	type = 0;
-	curU = NULL;
 	//Load file here
 	loadUserList("user.csv");
 	loadBookList("book.csv");
-
-
+	loadPublisherList("nxb.csv");
+	loadAuthorList("author.csv");
+	loadBookToPointerList();
 }
 
 void BookStore::run()
@@ -26,7 +26,7 @@ void BookStore::run()
 		}
 		else
 		{
-			if (curU->getType() == 1)
+			if (curU)
 			{
 				menu.userMenu();
 				cin >> cmd;
@@ -37,6 +37,14 @@ void BookStore::run()
 				menu.adminMenu();
 				cin >> cmd;
 
+			}
+			if (curP)
+			{
+				//Publisher function here
+			}
+			if (curA)
+			{
+				//Author function here
 			}
 		}
 	}
@@ -55,7 +63,10 @@ void BookStore::loadUserList(const string& path)
 	{
 		User tmp;
 		tmp = splitUserLine(line, ',');
-		listUser.push_back(tmp);
+		if (tmp.getType() != -1)
+		{
+			QTV.uList.push_back(tmp);
+		}
 	}
 	file.close();
 }
@@ -78,20 +89,126 @@ void BookStore::loadBookList(const string& path)
 	file.close();
 }
 
+void BookStore::loadPublisherList(const string& path)
+{
+	ifstream file(path);
+	if (!file.is_open())
+	{
+		isRun = false;
+		return;
+	}
+	string line;
+	while (getline(file, line))
+	{
+		NXB tmp;
+		tmp = splitPublisherLine(line, ',');
+		if (tmp.getType() != -1)
+		{
+			QTV.pList.push_back(tmp);
+		}
+	}
+	file.close();
+}
+
+void BookStore::loadBookToPointerList()
+{
+	vector<Sach>::iterator it;
+	for (it = Ke1.LIST.begin(); it != Ke1.LIST.end(); it++)
+	{
+		if (it->fGetNXB() != "")
+		{
+			list<NXB>::iterator itP;
+			for (itP = QTV.pList.begin(); itP != QTV.pList.end(); itP++)
+			{
+				if (itP->getName() == it->fGetNXB())
+				{
+					itP->list.push_back(&(*it));
+				}
+			}
+		}
+		if (it->fGetTacGia() != "")
+		{
+			list<Author>::iterator itA;
+			for (itA = QTV.aList.begin(); itA != QTV.aList.end(); itA++)
+			{
+				if (itA->getName() == it->fGetNXB())
+				{
+					itA->list.push_back(&(*it));
+				}
+			}
+		}
+	}
+}
+
+void BookStore::loadAuthorList(const string& path)
+{
+	ifstream file(path);
+	if (!file.is_open())
+	{
+		isRun = false;
+		return;
+	}
+	string line;
+	while (getline(file, line))
+	{
+		Author tmp;
+		tmp = splitAuthorLine(line, ',');
+		if (tmp.getType() != -1)
+		{
+			QTV.aList.push_back(tmp);
+		}
+	}
+	file.close();
+}
+
 User BookStore::splitUserLine(string line, char delim)
 {
 	stringstream str(line);
-	User u; string tmp;
+	string tmp;
 	getline(str, tmp, delim);
+	User u;
 	u.setType(stod(tmp));
 	getline(str, tmp, delim);
-	u.setName(tmp);
+	u.setUsername(tmp);
 	getline(str, tmp, delim);
 	u.setPass(tmp);
 	getline(str, tmp, delim);
+	u.setName(tmp);
+	getline(str, tmp, delim);
 	u.setAge(stod(tmp));
-
 	return u;
+}
+
+NXB BookStore::splitPublisherLine(string line, char delim)
+{
+	stringstream str(line);
+	string tmp;
+	getline(str, tmp, delim);
+	NXB p;
+	p.setType(stod(tmp));
+	getline(str, tmp, delim);
+	p.setUsername(tmp);
+	getline(str, tmp, delim);
+	p.setPass(tmp);
+	getline(str, tmp, delim);
+	p.setName(tmp);
+	return p;
+}
+
+Author BookStore::splitAuthorLine(string line, char delim)
+{
+	stringstream str(line);
+	string tmp;
+	getline(str, tmp, delim);
+	Author a;
+	a.setType(stod(tmp));
+	getline(str, tmp, delim);
+	a.setUsername(tmp);
+	getline(str, tmp, delim);
+	a.setPass(tmp);
+	getline(str, tmp, delim);
+	a.setName(tmp);
+	return a;
 }
 
 Sach BookStore::splitBookLine(string line, char delim)
@@ -149,8 +266,7 @@ void BookStore::userFunction(int cmd)
 		curU->inDanhSachHoaDon();
 		break;
 	case 5:
-		isLogged = false;
-		curU = NULL;
+		dangXuat();
 		break;
 	default:
 		isRun = false;
@@ -163,16 +279,52 @@ void BookStore::dangNhap()
 	string user, pass;
 	cout << "Ten dang nhap: "; cin >> user;
 	cout << "Mat khau: "; cin >> pass;
-	vector<User>::iterator it;
-	for (it = listUser.begin(); it != listUser.end(); it++)
+	list<User>::iterator itU;
+	for (itU = QTV.uList.begin(); itU != QTV.uList.end(); itU++)
 	{
-		if (user == it->getName())
+		if (user == itU->getUsername())
 		{
-			if (pass == it->getPass())
+			if (pass == itU->getPass())
 			{
 				cout << "Dang nhap thanh cong" << endl;
 				isLogged = true;
-				curU = &(*it);
+				curU = &(*itU);
+			}
+			else
+			{
+				cout << "Sai mat khau" << endl;
+			}
+			break;
+		}
+	}
+	list<NXB>::iterator itP;
+	for (itP = QTV.pList.begin(); itP != QTV.pList.end(); itP++)
+	{
+		if (user == itP->getUsername())
+		{
+			if (pass == itP->getPass())
+			{
+				cout << "Dang nhap thanh cong" << endl;
+				isLogged = true;
+				curP = &(*itP);
+			}
+			else
+			{
+				cout << "Sai mat khau" << endl;
+			}
+			break;
+		}
+	}
+	list<Author>::iterator itA;
+	for (itA = QTV.aList.begin(); itA != QTV.aList.end(); itA++)
+	{
+		if (user == itA->getUsername())
+		{
+			if (pass == itA->getPass())
+			{
+				cout << "Dang nhap thanh cong" << endl;
+				isLogged = true;
+				curA = &(*itA);
 			}
 			else
 			{
@@ -183,5 +335,13 @@ void BookStore::dangNhap()
 	}
 	if(!isLogged) 
 		cout << "Khong ton tai ten dang nhap" << endl;
+}
+
+void BookStore::dangXuat()
+{
+	curU = NULL;
+	curP = NULL;
+	curA = NULL;
+	isLogged = false;
 }
 

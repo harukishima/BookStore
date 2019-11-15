@@ -1,6 +1,7 @@
 #ifndef __SACH_H__
 #define __SACH_H__
 #include <string>
+#include <vector>
 #include <iostream>
 using namespace std;
 class Sach
@@ -10,6 +11,7 @@ private:
 	string TENSACH;
 	string TACGIA = "";
 	string NXB = "";
+	vector<string> blackList;
 	int GIASACH;
 public:
 	Sach();

@@ -7,9 +7,8 @@
 
 class NXB : public Account
 {
-private:
-	vector<Sach*> list;
 public:
+	vector<Sach*> list;
 	NXB();
 	virtual ~NXB();
 	void themSach(ListSach&);

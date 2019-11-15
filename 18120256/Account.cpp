@@ -1,8 +1,14 @@
 #include "Account.h"
 
-void Account::setName(string& name)
+Account::Account()
 {
-	mName = name;
+	mUsername = mPass = mName = "";
+	mType = -1;
+}
+
+void Account::setUsername(string& name)
+{
+	mUsername = name;
 }
 
 void Account::setPass(string& pass)
@@ -15,9 +21,14 @@ void Account::setType(const int& type)
 	mType = type;
 }
 
-string Account::getName()
+void Account::setName(string& name)
 {
-	return mName;
+	mName = name;
+}
+
+string Account::getUsername()
+{
+	return mUsername;
 }
 
 string Account::getPass()
@@ -28,4 +39,9 @@ string Account::getPass()
 int Account::getType()
 {
 	return mType;
+}
+
+string Account::getName()
+{
+	return mName;
 }

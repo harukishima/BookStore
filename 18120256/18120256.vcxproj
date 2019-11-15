@@ -153,6 +153,8 @@
   <ItemGroup>
     <ClCompile Include="18120256.cpp" />
     <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Author.cpp" />
     <ClCompile Include="BookStore.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="HoaDon.cpp" />
@@ -165,6 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="Author.h" />
     <ClInclude Include="BookStore.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="HoaDon.h" />

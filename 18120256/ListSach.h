@@ -13,6 +13,7 @@ public:
 	void fTimSach(string);
 	void fTim1Sach(int it);
 	Sach* findBook(string);
+	Sach* findBookBaseOnID(string);
 	void fXoaSach(int i);
 	void fXoaTatCa();
 	void fThemSach(Sach);

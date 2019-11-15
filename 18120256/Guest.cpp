@@ -18,6 +18,11 @@ void Guest::timSach(ListSach& ke)
 	string tensach;
 	getline(cin, tensach);
 	Sach *tmp = ke.findBook(tensach);
+	if (tmp == NULL)
+	{
+		cout << "Khong tim thay" << endl;
+		return;
+	}
 	if (tmp->fGetID() == "") {
 		cout << "Khong tim thay" << endl;
 	}

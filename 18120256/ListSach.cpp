@@ -38,7 +38,9 @@ void ListSach::fXuatListSach()
 			cout << i + 1 << endl;
 			cout << "ID: " << LIST[i].fGetID() << endl;
 			cout << "Ten sach: " << LIST[i].fGetName() << endl;
-			cout << "Gia sach: " << LIST[i].fGetGia() << endl << endl;
+			cout << "Gia sach: " << LIST[i].fGetGia() << endl;
+			cout << "NXB: " << LIST[i].fGetNXB() << endl;
+			cout << "Tac gia: " << LIST[i].fGetTacGia() << endl << endl;
 		}
 	}
 }
@@ -133,6 +135,20 @@ Sach* ListSach::findBook(string ten)
 				count++;
 				tmp = &(*it);
 			}
+		}
+	}
+	return tmp;
+}
+
+Sach* ListSach::findBookBaseOnID(string id)
+{
+	vector<Sach>::iterator it;
+	Sach* tmp = NULL;
+	for (it = LIST.begin(); it != LIST.end(); ++it)
+	{
+		if (it->fGetID() == id)
+		{
+			tmp = &(*it);
 		}
 	}
 	return tmp;
