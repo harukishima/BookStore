@@ -13,6 +13,11 @@ public:
 	virtual ~NXB();
 	void themSach(ListSach&);
 	void xoaSach();
+	void suaSach();
+
+	friend ostream& operator<< (ostream& out, NXB scr);
+
+	virtual void printInformation();
 };
 
 

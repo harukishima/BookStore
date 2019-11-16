@@ -62,3 +62,39 @@ void NXB::xoaSach()
 		}
 	}
 }
+
+void NXB::suaSach()
+{
+	cout << "Nhap ma sach can sua: ";
+	string id;
+	cin >> id;
+	vector<Sach*>::iterator it;
+	for (it = list.begin(); it != list.end(); it++)
+	{
+		if (id == (*it)->fGetID())
+		{
+			if ((*it)->checkBlackList(mName))
+			{
+				cout << "Ban khong the sua duoc sach nay" << endl;
+				return;
+			}
+			cout << "Nhap gia moi: ";
+			int gia;
+			cin >> gia;
+			(*it)->fSetGia(gia);
+			return;
+		}
+	}
+}
+
+void NXB::printInformation()
+{
+	cout << "Ten dang nhap: " << mUsername << endl;
+	cout << "Ten: " << mName << endl;
+}
+
+ostream& operator<<(ostream& out, NXB scr)
+{
+	out << scr.mType << "," << scr.mUsername << "," << scr.mPass << "," << scr.mName;
+	return out;
+}

@@ -61,3 +61,16 @@ void User::inDanhSachHoaDon()
 {
 	mHoadon.inMHoaDon();
 }
+
+void User::printInformation()
+{
+	cout << "Ten dang nhap: " << mUsername << endl;
+	cout << "Ten: " << mName << endl;
+	cout << "Tuoi: " << mAge << endl;
+}
+
+ostream& operator<<(ostream& out, User scr)
+{
+	out << scr.mType << "," << scr.mUsername << "," << scr.mPass << "," << scr.mName << "," << scr.mAge;
+	return out;
+}

@@ -29,13 +29,16 @@ private:
 	Admin QTV;
 public:
 	BookStore();
-	virtual ~BookStore() = default;
+	virtual ~BookStore();
 	void run();
 	void loadUserList(const string&);
+	void exportUserList(const string&);
 	void loadBookList(const string&);
 	void loadPublisherList(const string&);
+	void exportPublisherList(const string&);
 	void loadBookToPointerList();
 	void loadAuthorList(const string&);
+	void exportAuthorList(const string&);
 	User splitUserLine(string, char);
 	NXB splitPublisherLine(string, char);
 	Author splitAuthorLine(string, char);

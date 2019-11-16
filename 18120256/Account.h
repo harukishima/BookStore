@@ -21,6 +21,8 @@ public:
 	string getPass();
 	int getType();
 	string getName();
+
+	virtual void printInformation() = 0;
 };
 
 

@@ -123,8 +123,27 @@ int Sach::fGetGia()
 	return this->GIASACH;
 }
 
+bool Sach::checkBlackList(const string& name)
+{
+	bool dk = false;
+	vector<string>::iterator it;
+	for (it = blackList.begin(); it != blackList.end(); it++)
+	{
+		if (name == *it)
+		{
+			dk = true;
+		}
+	}
+	return dk;
+}
+
 ostream& operator<<(ostream& out, Sach s)
 {
-	out << s.fGetID() << "\t" << s.fGetName() << "\t" << s.fGetGia() << endl;
+	out << s.fGetID() << "," << s.fGetName() << "," << s.fGetGia() << "," << s.fGetNXB() << "," << s.fGetTacGia();
+	vector<string>::iterator it;
+	for (it = s.blackList.begin(); it != s.blackList.end(); it++)
+	{
+		out << "," << *it;
+	}
 	return out;
 }

@@ -14,6 +14,9 @@ public:
 	Author();
 	virtual ~Author() = default;
 
+	friend ostream& operator<<(ostream& out, Author scr);
+
+	virtual void printInformation();
 };
 
 

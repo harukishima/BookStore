@@ -21,11 +21,13 @@ public:
 	void setAge(const int&);
 
 	int getAge();
-	
+	friend ostream& operator<<(ostream& out, User scr);
 
 	void muaSach(ListSach&);
 	void capNhatDonHang();
 	void inDanhSachHoaDon();
+
+	virtual void printInformation();
 };
 
 

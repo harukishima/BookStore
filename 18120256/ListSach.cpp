@@ -45,6 +45,22 @@ void ListSach::fXuatListSach()
 	}
 }
 
+void ListSach::fXuatFileSach(const string& path)
+{
+	ofstream file(path);
+	if (!file.is_open())
+	{
+		cout << "Khong xuat duoc file sach" << endl;
+		return;
+	}
+	vector<Sach>::iterator it;
+	for (it = LIST.begin(); it != LIST.end(); it++)
+	{
+		file << (*it) << endl;
+	}
+	file.close();
+}
+
 void ListSach::fTimSach(string tensach)
 {
 	int count = 0; int it;

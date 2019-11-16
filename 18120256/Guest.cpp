@@ -28,6 +28,6 @@ void Guest::timSach(ListSach& ke)
 	}
 	else
 	{
-		cout << *tmp;
+		cout << (*tmp);
 	}
 }

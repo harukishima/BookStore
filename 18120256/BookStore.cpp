@@ -13,6 +13,14 @@ BookStore::BookStore()
 	loadBookToPointerList();
 }
 
+BookStore::~BookStore()
+{
+	exportUserList("user.csv");
+	exportPublisherList("nxb.csv");
+	exportAuthorList("author.csv");
+	Ke1.fXuatFileSach("book.csv");
+}
+
 void BookStore::run()
 {
 	while (isRun)
@@ -71,6 +79,22 @@ void BookStore::loadUserList(const string& path)
 	file.close();
 }
 
+void BookStore::exportUserList(const string& path)
+{
+	ofstream file(path);
+	if (!file.is_open())
+	{
+		isRun = false;
+		return;
+	}
+	list<User>::iterator it;
+	for (it = QTV.uList.begin(); it != QTV.uList.end(); it++)
+	{
+		file << (*it) << endl;
+	}
+	file.close();
+}
+
 void BookStore::loadBookList(const string& path)
 {
 	ifstream file(path);
@@ -89,6 +113,7 @@ void BookStore::loadBookList(const string& path)
 	file.close();
 }
 
+
 void BookStore::loadPublisherList(const string& path)
 {
 	ifstream file(path);
@@ -106,6 +131,22 @@ void BookStore::loadPublisherList(const string& path)
 		{
 			QTV.pList.push_back(tmp);
 		}
+	}
+	file.close();
+}
+
+void BookStore::exportPublisherList(const string& path)
+{
+	ofstream file(path);
+	if (!file.is_open())
+	{
+		isRun = false;
+		return;
+	}
+	list<NXB>::iterator it;
+	for (it = QTV.pList.begin(); it != QTV.pList.end(); it++)
+	{
+		file << (*it) << endl;
 	}
 	file.close();
 }
@@ -157,6 +198,22 @@ void BookStore::loadAuthorList(const string& path)
 		{
 			QTV.aList.push_back(tmp);
 		}
+	}
+	file.close();
+}
+
+void BookStore::exportAuthorList(const string& path)
+{
+	ofstream file(path);
+	if (!file.is_open())
+	{
+		isRun = false;
+		return;
+	}
+	list<Author>::iterator it;
+	for (it = QTV.aList.begin(); it != QTV.aList.end(); it++)
+	{
+		file << (*it) << endl;
 	}
 	file.close();
 }
@@ -225,6 +282,10 @@ Sach BookStore::splitBookLine(string line, char delim)
 	s.fSetNXB(tmp);
 	getline(str, tmp, delim);
 	s.fSetTacGia(tmp);
+	while (getline(str, tmp, delim))
+	{
+		s.blackList.push_back(tmp);
+	}
 	return s;
 }
 

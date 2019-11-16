@@ -11,9 +11,10 @@ private:
 	string TENSACH;
 	string TACGIA = "";
 	string NXB = "";
-	vector<string> blackList;
+	
 	int GIASACH;
 public:
+	vector<string> blackList;
 	Sach();
 	Sach(string, string, int);
 	Sach(const Sach&);
@@ -31,7 +32,7 @@ public:
 	string fGetTacGia();
 	string fGetNXB();
 	int fGetGia();
-
+	bool checkBlackList(const string&);
 };
 
 

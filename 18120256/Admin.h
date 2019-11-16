@@ -18,7 +18,14 @@ public:
 
 	Admin();
 	
+	void printUserList();
+	void printPublisherList();
+	void printAuthorList();
 
+	bool isNameExist(const string&);
+	void blacklist(ListSach&);
+
+	virtual void printInformation();
 };
 
 
