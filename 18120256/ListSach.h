@@ -20,6 +20,7 @@ public:
 	void fXoaSach(int i);
 	void fXoaTatCa();
 	void fThemSach(Sach);
+	void themSach();
 };
 
 #endif // !__LISTSACH_H__

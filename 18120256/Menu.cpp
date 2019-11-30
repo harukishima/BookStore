@@ -4,11 +4,12 @@ Menu::Menu()
 {
 }
 
-void Menu::guessMenu()
+void Menu::guestMenu()
 {
 	cout << "1. Dang nhap" << endl;
 	cout << "2. Tim sach" << endl;
 	cout << "3. Hien thi tat ca sach" << endl;
+	cout << "4. Dang ki" << endl;
 	cout << "0. Exit" << endl;
 }
 

@@ -8,13 +8,14 @@
 #include "Account.h"
 
 class User :
-	public Account, public Guest
+	public Account
 {
 private:
 	int mAge;
 	MangHoaDon mHoadon;
 public:
 	User();
+	User(string, string, string, int);
 	virtual ~User();
 
 	
@@ -35,6 +36,3 @@ public:
 
 
 #endif // !__USER_H__
-
-
-

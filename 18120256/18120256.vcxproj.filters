@@ -92,5 +92,8 @@
     <ClInclude Include="Author.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

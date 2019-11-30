@@ -170,6 +170,7 @@
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Author.h" />
     <ClInclude Include="BookStore.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="HoaDon.h" />
     <ClInclude Include="ListSach.h" />

@@ -7,7 +7,7 @@ Admin::Admin()
 	mType = 0;
 }
 
-void Admin::printUserList()
+void Admin::printUserList(list<User>& uList)
 {
 	list<User>::iterator it;
 	for (it = uList.begin(); it != uList.end(); it++)
@@ -17,7 +17,7 @@ void Admin::printUserList()
 	}
 }
 
-void Admin::printPublisherList()
+void Admin::printPublisherList(list<NXB>&pList)
 {
 	list<NXB>::iterator it;
 	for (it = pList.begin(); it != pList.end(); it++)
@@ -27,7 +27,7 @@ void Admin::printPublisherList()
 	}
 }
 
-void Admin::printAuthorList()
+void Admin::printAuthorList(list<Author>&aList)
 {
 	list<Author>::iterator it;
 	for (it = aList.begin(); it != aList.end(); it++)
@@ -37,7 +37,7 @@ void Admin::printAuthorList()
 	}
 }
 
-bool Admin::isNameExist(const string& name)
+bool Admin::isNameExist(const string& name, list<NXB>& pList, list<Author>& aList)
 {
 	bool dk = false;
 	list<NXB>::iterator itP;
@@ -59,7 +59,7 @@ bool Admin::isNameExist(const string& name)
 	return dk;
 }
 
-void Admin::blacklist(ListSach& ke)
+void Admin::blacklist(ListSach& ke, list<NXB>& pList, list<Author>& aList)
 {
 	ke.fXuatListSach();
 	string id, name;
@@ -74,7 +74,7 @@ void Admin::blacklist(ListSach& ke)
 	}
 	cout << "Nhap ten dang nhap can an: ";
 	cin >> name;
-	if (!isNameExist(name))
+	if (!isNameExist(name, pList, aList))
 	{
 		cout << "Khong tim thay ten yeu cau" << endl;
 		return;

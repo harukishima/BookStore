@@ -8,7 +8,7 @@ class Menu
 {
 public:
 	Menu();
-	void guessMenu();
+	void guestMenu();
 	void userMenu();
 	void adminMenu();
 };

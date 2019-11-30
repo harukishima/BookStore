@@ -4,6 +4,16 @@
 
 User::User()
 {
+	mType = 1;
+}
+
+User::User(string user, string pass, string name, int age)
+{
+	mType = 1;
+	mUsername = user;
+	mPass = pass;
+	mName = name;
+	mAge = age;
 }
 
 

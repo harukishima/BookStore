@@ -28,7 +28,7 @@ void BookStore::run()
 		int cmd;
 		if (!isLogged)
 		{
-			menu.guessMenu();
+			menu.guestMenu();
 			cin >> cmd;
 			guestFunction(cmd);
 		}
@@ -40,11 +40,11 @@ void BookStore::run()
 				cin >> cmd;
 				userFunction(cmd);
 			}
-			else if (curU->getType() == 0)
+			if (curAd)
 			{
 				menu.adminMenu();
 				cin >> cmd;
-
+				adminFunction(cmd);
 			}
 			if (curP)
 			{
@@ -73,7 +73,7 @@ void BookStore::loadUserList(const string& path)
 		tmp = splitUserLine(line, ',');
 		if (tmp.getType() != -1)
 		{
-			QTV.uList.push_back(tmp);
+			uList.push_back(tmp);
 		}
 	}
 	file.close();
@@ -88,7 +88,7 @@ void BookStore::exportUserList(const string& path)
 		return;
 	}
 	list<User>::iterator it;
-	for (it = QTV.uList.begin(); it != QTV.uList.end(); it++)
+	for (it = uList.begin(); it != uList.end(); it++)
 	{
 		file << (*it) << endl;
 	}
@@ -129,7 +129,7 @@ void BookStore::loadPublisherList(const string& path)
 		tmp = splitPublisherLine(line, ',');
 		if (tmp.getType() != -1)
 		{
-			QTV.pList.push_back(tmp);
+			pList.push_back(tmp);
 		}
 	}
 	file.close();
@@ -144,7 +144,7 @@ void BookStore::exportPublisherList(const string& path)
 		return;
 	}
 	list<NXB>::iterator it;
-	for (it = QTV.pList.begin(); it != QTV.pList.end(); it++)
+	for (it = pList.begin(); it != pList.end(); it++)
 	{
 		file << (*it) << endl;
 	}
@@ -159,7 +159,7 @@ void BookStore::loadBookToPointerList()
 		if (it->fGetNXB() != "")
 		{
 			list<NXB>::iterator itP;
-			for (itP = QTV.pList.begin(); itP != QTV.pList.end(); itP++)
+			for (itP = pList.begin(); itP != pList.end(); itP++)
 			{
 				if (itP->getName() == it->fGetNXB())
 				{
@@ -170,7 +170,7 @@ void BookStore::loadBookToPointerList()
 		if (it->fGetTacGia() != "")
 		{
 			list<Author>::iterator itA;
-			for (itA = QTV.aList.begin(); itA != QTV.aList.end(); itA++)
+			for (itA = aList.begin(); itA != aList.end(); itA++)
 			{
 				if (itA->getName() == it->fGetNXB())
 				{
@@ -196,7 +196,7 @@ void BookStore::loadAuthorList(const string& path)
 		tmp = splitAuthorLine(line, ',');
 		if (tmp.getType() != -1)
 		{
-			QTV.aList.push_back(tmp);
+			aList.push_back(tmp);
 		}
 	}
 	file.close();
@@ -211,7 +211,7 @@ void BookStore::exportAuthorList(const string& path)
 		return;
 	}
 	list<Author>::iterator it;
-	for (it = QTV.aList.begin(); it != QTV.aList.end(); it++)
+	for (it = aList.begin(); it != aList.end(); it++)
 	{
 		file << (*it) << endl;
 	}
@@ -304,6 +304,9 @@ void BookStore::guestFunction(int cmd)
 	case 3:
 		Ke1.fXuatListSach();
 		break;
+	case 4:
+		dangKi();
+		break;
 	default:
 		isRun = false;
 		break;
@@ -321,12 +324,49 @@ void BookStore::userFunction(int cmd)
 		curU->capNhatDonHang();
 		break;
 	case 3:
-		curU->timSach(Ke1);
+		guest.timSach(Ke1);
 		break;
 	case 4:
 		curU->inDanhSachHoaDon();
 		break;
 	case 5:
+		dangXuat();
+		break;
+	default:
+		isRun = false;
+		break;
+	}
+}
+
+void BookStore::adminFunction(int cmd)
+{
+	int tmp; string a;
+	switch (cmd)
+	{
+	case 1:
+
+		break;
+	case 2:
+		Ke1.fXuatListSach();
+		break;
+	case 3:
+		Ke1.fXuatListSach();
+		cout << "Nhap STT sach: ";
+		cin >> tmp;
+		Ke1.fXoaSach(tmp);
+		break;
+	case 4:
+		cin.ignore();
+		getline(cin, a);
+		Ke1.fTimSach(a);
+		break;
+	case 5:
+		Ke1.themSach();
+		break;
+	case 6:
+		Ke1.fXoaTatCa();
+		break;
+	case 7:
 		dangXuat();
 		break;
 	default:
@@ -341,7 +381,7 @@ void BookStore::dangNhap()
 	cout << "Ten dang nhap: "; cin >> user;
 	cout << "Mat khau: "; cin >> pass;
 	list<User>::iterator itU;
-	for (itU = QTV.uList.begin(); itU != QTV.uList.end(); itU++)
+	for (itU = uList.begin(); itU != uList.end(); itU++)
 	{
 		if (user == itU->getUsername())
 		{
@@ -359,7 +399,7 @@ void BookStore::dangNhap()
 		}
 	}
 	list<NXB>::iterator itP;
-	for (itP = QTV.pList.begin(); itP != QTV.pList.end(); itP++)
+	for (itP = pList.begin(); itP != pList.end(); itP++)
 	{
 		if (user == itP->getUsername())
 		{
@@ -377,7 +417,7 @@ void BookStore::dangNhap()
 		}
 	}
 	list<Author>::iterator itA;
-	for (itA = QTV.aList.begin(); itA != QTV.aList.end(); itA++)
+	for (itA = aList.begin(); itA != aList.end(); itA++)
 	{
 		if (user == itA->getUsername())
 		{
@@ -397,6 +437,34 @@ void BookStore::dangNhap()
 	if(!isLogged) 
 		cout << "Khong ton tai ten dang nhap" << endl;
 }
+
+void BookStore::dangKi()
+{
+	string user, pass;
+	cout << "Nhap ten dang nhap: ";
+	cin >> user;
+	list<User>::iterator it;
+	for (it = uList.begin(); it != uList.end(); it++)
+	{
+		if (it->getName() == user)
+		{
+			cout << "Da ton tai ten dang nhap\n";
+			return;
+		}
+	}
+	cout << "Nhap mat khau: ";
+	cin >> pass;
+	int age;
+	cout << "Nhap tuoi: ";
+	cin >> age;
+	cin.ignore();
+	cout << "Nhap ho ten: ";
+	string name;
+	getline(cin, name);
+	User newU(user, pass, name, age);
+	uList.push_back(newU);
+}
+
 
 void BookStore::dangXuat()
 {

@@ -12,18 +12,18 @@ class Admin :
 	public Account
 {
 public:
-	list<User> uList;
+	/*list<User> uList;
 	list<NXB> pList;
-	list<Author> aList;
+	list<Author> aList;*/
 
 	Admin();
 	
-	void printUserList();
-	void printPublisherList();
-	void printAuthorList();
+	void printUserList(list<User>&);
+	void printPublisherList(list<NXB>&);
+	void printAuthorList(list<Author>&);
 
-	bool isNameExist(const string&);
-	void blacklist(ListSach&);
+	bool isNameExist(const string&, list<NXB>&, list<Author>&);
+	void blacklist(ListSach&, list<NXB>& pList, list<Author>& aList);
 
 	virtual void printInformation();
 };

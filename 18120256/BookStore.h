@@ -22,9 +22,13 @@ private:
 	int type;
 	Menu menu;
 	ListSach Ke1;
+	list<User> uList;
+	list<NXB> pList;
+	list<Author> aList;
 	User* curU = NULL;
 	NXB* curP = NULL;
 	Author* curA = NULL;
+	Admin* curAd = NULL;
 	Guest guest;
 	Admin QTV;
 public:
@@ -45,8 +49,11 @@ public:
 	Sach splitBookLine(string, char);
 	void guestFunction(int);
 	void userFunction(int);
+	void adminFunction(int);
 	void dangNhap();
+	void dangKi();
 	void dangXuat();
+	friend class Admin;
 };
 
 

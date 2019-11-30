@@ -187,3 +187,20 @@ void ListSach::fThemSach(Sach s)
 {
 	LIST.push_back(s);
 }
+
+void ListSach::themSach()
+{
+	string ms, ten; int gia;
+	cout << "Nhap MS: ";
+	cin >> ms;
+	cin.ignore();
+	cout << "Nhap ten sach: ";
+	getline(cin, ten);
+	cout << "Nhap so luong: ";
+	cin >> gia;
+	Sach tmp;
+	tmp.fSetID(ms);
+	tmp.fSetName(ten);
+	tmp.fSetGia(gia);
+	fThemSach(tmp);
+}
