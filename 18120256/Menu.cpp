@@ -32,5 +32,6 @@ void Menu::adminMenu()
 	cout << "5. Them sach" << endl;
 	cout << "6. Xoa tat ca sach" << endl;
 	cout << "7. Dang xuat" << endl;
+	cout << "8. Blacklist" << endl;
 	cout << "0. Thoat" << endl;
 }

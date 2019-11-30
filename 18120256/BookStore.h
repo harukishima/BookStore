@@ -25,6 +25,7 @@ private:
 	list<User> uList;
 	list<NXB> pList;
 	list<Author> aList;
+	list<Admin> adList;
 	User* curU = NULL;
 	NXB* curP = NULL;
 	Author* curA = NULL;

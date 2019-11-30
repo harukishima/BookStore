@@ -369,6 +369,9 @@ void BookStore::adminFunction(int cmd)
 	case 7:
 		dangXuat();
 		break;
+	case 8:
+		curAd->blacklist(Ke1, pList, aList);
+		break;
 	default:
 		isRun = false;
 		break;
