@@ -87,6 +87,17 @@ void NXB::suaSach()
 	}
 }
 
+
+
+void NXB::inDanhSach()
+{
+	vector<Sach*>::iterator it;
+	for (it = list.begin(); it != list.end(); it++)
+	{
+		(*it)->inSach();
+	}
+}
+
 void NXB::printInformation()
 {
 	cout << "Ten dang nhap: " << mUsername << endl;

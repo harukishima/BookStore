@@ -14,8 +14,9 @@ public:
 	void themSach(ListSach&);
 	void xoaSach();
 	void suaSach();
-
+	
 	friend ostream& operator<< (ostream& out, NXB scr);
+	void inDanhSach();
 
 	virtual void printInformation();
 };

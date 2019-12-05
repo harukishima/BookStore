@@ -72,6 +72,18 @@ void User::inDanhSachHoaDon()
 	mHoadon.inMHoaDon();
 }
 
+void User::loadBill(ListSach& Ke)
+{ 
+	string path = "Bill\\" + mUsername + ".csv";
+	mHoadon.loadBill(path, Ke);
+}
+
+void User::exportBill()
+{
+	string path = "Bill\\" + mUsername + ".csv";
+	mHoadon.exportBill(path);
+}
+
 void User::printInformation()
 {
 	cout << "Ten dang nhap: " << mUsername << endl;

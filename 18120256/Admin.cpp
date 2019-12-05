@@ -88,3 +88,9 @@ void Admin::printInformation()
 	cout << "Ten dang nhap: " << mUsername << endl;
 	cout << "Ten: " << mName << endl;
 }
+
+ostream& operator<<(ostream& out, Admin scr)
+{
+	out << scr.mType << "," << scr.mUsername << "," << scr.mPass << "," << scr.mName;
+	return out;
+}

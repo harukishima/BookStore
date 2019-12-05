@@ -31,12 +31,15 @@ private:
 	Author* curA = NULL;
 	Admin* curAd = NULL;
 	Guest guest;
-	Admin QTV;
 public:
 	BookStore();
 	virtual ~BookStore();
 	void run();
+
+
 	void loadUserList(const string&);
+	void loadAdminList(const string&);
+	void exportAdminList(const string&);
 	void exportUserList(const string&);
 	void loadBookList(const string&);
 	void loadPublisherList(const string&);
@@ -47,10 +50,16 @@ public:
 	User splitUserLine(string, char);
 	NXB splitPublisherLine(string, char);
 	Author splitAuthorLine(string, char);
+	Admin splitAdminLine(string, char);
 	Sach splitBookLine(string, char);
+	void loadPublisherAndAuthor();
+
+
 	void guestFunction(int);
 	void userFunction(int);
 	void adminFunction(int);
+	void publisherFunction(int);
+	void authorFunction(int);
 	void dangNhap();
 	void dangKi();
 	void dangXuat();

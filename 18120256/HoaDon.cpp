@@ -31,6 +31,11 @@ void HoaDon::setTien(int tien)
 	mTien = tien;
 }
 
+void HoaDon::setBook(Sach a)
+{
+	mSach = a;
+}
+
 void HoaDon::taoHoaDon(ListSach l, string tensach, int soluong)
 {
 	 mSach = *l.findBook(tensach);

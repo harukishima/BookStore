@@ -32,6 +32,7 @@ public:
 	string fGetTacGia();
 	string fGetNXB();
 	int fGetGia();
+	void inSach();
 	bool checkBlackList(const string&);
 };
 

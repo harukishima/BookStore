@@ -35,3 +35,13 @@ void Menu::adminMenu()
 	cout << "8. Blacklist" << endl;
 	cout << "0. Thoat" << endl;
 }
+
+void Menu::publisherMenu()
+{
+	cout << "1. Xem sach" << endl;
+	cout << "2. Them sach" << endl;
+	cout << "3. Xoa sach" << endl;
+	cout << "4. Sua gia" << endl;
+	cout << "5. Dang xuat" << endl;
+	cout << "0. Thoat" << endl;
+}

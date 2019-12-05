@@ -25,6 +25,8 @@ public:
 	bool isNameExist(const string&, list<NXB>&, list<Author>&);
 	void blacklist(ListSach&, list<NXB>& pList, list<Author>& aList);
 
+	friend ostream& operator<<(ostream& out, Admin scr);
+
 	virtual void printInformation();
 };
 

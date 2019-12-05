@@ -21,6 +21,12 @@ Sach::Sach(const Sach& a)
 	this->ID = a.ID;
 	this->TENSACH = a.TENSACH;
 	this->GIASACH = a.GIASACH;
+	this->NXB = a.NXB;
+	this->TACGIA = a.TACGIA;
+	for (int i = 0; i < a.blackList.size(); i++)
+	{
+		this->blackList[i] = a.blackList[i];
+	}
 }
 
 
@@ -37,6 +43,12 @@ Sach& Sach::operator=(const Sach& a)
 		this->ID = a.ID;
 		this->TENSACH = a.TENSACH;
 		this->GIASACH = a.GIASACH;
+		this->TACGIA = a.TACGIA;
+		this->NXB = a.NXB;
+		for (int i = 0; i < a.blackList.size(); i++)
+		{
+			this->blackList[i] = a.blackList[i];
+		}
 	}
 	return *this;
 }
@@ -123,18 +135,26 @@ int Sach::fGetGia()
 	return this->GIASACH;
 }
 
+void Sach::inSach()
+{
+	cout << "ID: " << fGetID() << endl;
+	cout << "Ten sach: " << fGetName() << endl;
+	cout << "Gia sach: " << fGetGia() << endl;
+	cout << "NXB: " << fGetNXB() << endl;
+	cout << "Tac gia: " << fGetTacGia() << endl << endl;
+}
+
 bool Sach::checkBlackList(const string& name)
 {
-	bool dk = false;
 	vector<string>::iterator it;
 	for (it = blackList.begin(); it != blackList.end(); it++)
 	{
 		if (name == *it)
 		{
-			dk = true;
+			return true;
 		}
 	}
-	return dk;
+	return false;
 }
 
 ostream& operator<<(ostream& out, Sach s)

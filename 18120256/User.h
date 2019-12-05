@@ -27,6 +27,8 @@ public:
 	void muaSach(ListSach&);
 	void capNhatDonHang();
 	void inDanhSachHoaDon();
+	void loadBill(ListSach& Ke);
+	void exportBill();
 
 	virtual void printInformation();
 };

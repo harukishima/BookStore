@@ -11,6 +11,7 @@ public:
 	void guestMenu();
 	void userMenu();
 	void adminMenu();
+	void publisherMenu();
 };
 
 
