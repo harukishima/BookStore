@@ -388,6 +388,65 @@ void BookStore::loadPublisherAndAuthor()
 	}
 }
 
+bool BookStore::checkAccountExistence(const string& username)
+{
+	list<Admin>::iterator itAd;
+	for (itAd = adList.begin(); itAd != adList.end(); itAd++)
+	{
+		if (itAd->getUsername() == username)
+			return true;
+	}
+	list<User>::iterator itU;
+	for (itU = uList.begin(); itU != uList.end(); itU++)
+	{
+		if (itU->getUsername() == username)
+			return true;
+	}
+	list<NXB>::iterator itP;
+	for (itP = pList.begin(); itP != pList.end(); itP++)
+	{
+		if (itP->getUsername() == username)
+			return true;
+	}
+	list<Author>::iterator itA;
+	for (itA = aList.begin(); itA != aList.end(); itA++)
+	{
+		if (itA->getUsername() == username)
+			return true;
+	}
+	return false;
+}
+
+void BookStore::sendMessageToAll(const string& sender)
+{
+	string message;
+	cout << "Tin nhan: ";
+	cin.ignore();
+	getline(cin, message);
+	list<Admin>::iterator itAd;
+	for (itAd = adList.begin(); itAd != adList.end(); itAd++)
+	{
+		if (itAd->getName() == sender)
+			continue;
+		Messager::sendMessage(sender, itAd->getUsername(), message);
+	}
+	list<User>::iterator itU;
+	for (itU = uList.begin(); itU != uList.end(); itU++)
+	{
+		Messager::sendMessage(sender, itU->getUsername(), message);
+	}
+	list<NXB>::iterator itP;
+	for (itP = pList.begin(); itP != pList.end(); itP++)
+	{
+		Messager::sendMessage(sender, itP->getUsername(), message);
+	}
+	list<Author>::iterator itA;
+	for (itA = aList.begin(); itA != aList.end(); itA++)
+	{
+		Messager::sendMessage(sender, itA->getUsername(), message);
+	}
+}
+
 void BookStore::guestFunction(int cmd)
 {
 	string tmp;
@@ -414,6 +473,7 @@ void BookStore::guestFunction(int cmd)
 
 void BookStore::userFunction(int cmd)
 {
+	string receiver;
 	switch (cmd)
 	{
 	case 1:
@@ -429,6 +489,19 @@ void BookStore::userFunction(int cmd)
 		curU->inDanhSachHoaDon();
 		break;
 	case 5:
+		cout << "Nhap ten nguoi nhan: ";
+		cin >> receiver;
+		if (!checkAccountExistence(receiver))
+		{
+			cout << "Khong ton tai nguoi nhan" << endl;
+			break;
+		}
+		curU->sendMessage(receiver);
+		break;
+	case 6:
+		curU->viewInbox();
+		break;
+	case 7:
 		dangXuat();
 		break;
 	default:
@@ -439,36 +512,50 @@ void BookStore::userFunction(int cmd)
 
 void BookStore::adminFunction(int cmd)
 {
+	string receiver;
 	int tmp; string a;
 	switch (cmd)
 	{
 	case 1:
-
+		sendMessageToAll(curAd->getUsername());
 		break;
 	case 2:
-		Ke1.fXuatListSach();
+		cout << "Nhap ten nguoi nhan: ";
+		cin >> receiver;
+		if (!checkAccountExistence(receiver))
+		{
+			cout << "Khong ton tai nguoi nhan" << endl;
+			break;
+		}
+		curAd->sendMessage(receiver);
 		break;
 	case 3:
+		curAd->viewInbox();
+		break;
+	case 4:
+		Ke1.fXuatListSach();
+		break;
+	case 5:
 		Ke1.fXuatListSach();
 		cout << "Nhap STT sach: ";
 		cin >> tmp;
 		Ke1.fXoaSach(tmp);
 		break;
-	case 4:
+	case 6:
 		cin.ignore();
 		getline(cin, a);
 		Ke1.fTimSach(a);
 		break;
-	case 5:
+	case 7:
 		Ke1.themSach();
 		break;
-	case 6:
+	case 8:
 		Ke1.fXoaTatCa();
 		break;
-	case 7:
+	case 9:
 		dangXuat();
 		break;
-	case 8:
+	case 10:
 		curAd->blacklist(Ke1, pList, aList);
 		break;
 	default:
@@ -479,6 +566,7 @@ void BookStore::adminFunction(int cmd)
 
 void BookStore::publisherFunction(int cmd)
 {
+	string receiver;
 	switch (cmd)
 	{
 	case 1:
@@ -494,6 +582,19 @@ void BookStore::publisherFunction(int cmd)
 		curP->suaSach();
 		break;
 	case 5:
+		cout << "Nhap ten nguoi nhan: ";
+		cin >> receiver;
+		if (!checkAccountExistence(receiver))
+		{
+			cout << "Khong ton tai nguoi nhan" << endl;
+			break;
+		}
+		curP->sendMessage(receiver);
+		break;
+	case 6:
+		curP->viewInbox();
+		break;
+	case 7:
 		dangXuat();
 		break;
 	default:
@@ -504,6 +605,7 @@ void BookStore::publisherFunction(int cmd)
 
 void BookStore::authorFunction(int cmd)
 {
+	string receiver;
 	switch (cmd)
 	{
 	case 1:
@@ -519,6 +621,19 @@ void BookStore::authorFunction(int cmd)
 		curA->suaSach();
 		break;
 	case 5:
+		cout << "Nhap ten nguoi nhan: ";
+		cin >> receiver;
+		if (!checkAccountExistence(receiver))
+		{
+			cout << "Khong ton tai nguoi nhan" << endl;
+			break;
+		}
+		curA->sendMessage(receiver);
+		break;
+	case 6:
+		curA->viewInbox();
+		break;
+	case 7:
 		dangXuat();
 		break;
 	default:

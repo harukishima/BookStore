@@ -45,3 +45,17 @@ string Account::getName()
 {
 	return mName;
 }
+
+void Account::sendMessage(const string& receiver)
+{
+	cin.ignore();
+	string message;
+	cout << "Tin nhan: ";
+	getline(cin, message);
+	Messager::sendMessage(mUsername, receiver, message);
+}
+
+void Account::viewInbox()
+{
+	Messager::inbox(mUsername);
+}

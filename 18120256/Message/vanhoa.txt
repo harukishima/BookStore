@@ -1,0 +1,2 @@
+21:19:24   6/11/2019	user1: First message!
+21:34:47   6/11/2019	admin1: Test123!!! AAA

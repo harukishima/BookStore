@@ -54,7 +54,8 @@ public:
 	Sach splitBookLine(string, char);
 	void loadPublisherAndAuthor();
 
-
+	bool checkAccountExistence(const string&);
+	void sendMessageToAll(const string&);
 	void guestFunction(int);
 	void userFunction(int);
 	void adminFunction(int);

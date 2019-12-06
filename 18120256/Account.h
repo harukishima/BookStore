@@ -2,6 +2,7 @@
 #define __ACCOUNT_H__
 
 #include <string>
+#include "Messager.h"
 using namespace std;
 
 class Account
@@ -21,6 +22,8 @@ public:
 	string getPass();
 	int getType();
 	string getName();
+	void sendMessage(const string&);
+	void viewInbox();
 
 	virtual void printInformation() = 0;
 };

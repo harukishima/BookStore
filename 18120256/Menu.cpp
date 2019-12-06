@@ -19,20 +19,24 @@ void Menu::userMenu()
 	cout << "2. Cap nhat don hang" << endl;
 	cout << "3. Tim sach" << endl;
 	cout << "4. In danh sach hoa don" << endl;
-	cout << "5. Dang xuat" << endl;
+	cout << "5. Gui tin nhan" << endl;
+	cout << "6. Xem hop thu" << endl;
+	cout << "7. Dang xuat" << endl;
 	cout << "0. Thoat" << endl;
 }
 
 void Menu::adminMenu()
 {
-	cout << "1. Nhap list sach" << endl;
-	cout << "2. Xuat list sach" << endl;
-	cout << "3. Xoa sach" << endl;
-	cout << "4. Tim sach" << endl;
-	cout << "5. Them sach" << endl;
-	cout << "6. Xoa tat ca sach" << endl;
-	cout << "7. Dang xuat" << endl;
-	cout << "8. Blacklist" << endl;
+	cout << "1. Gui tin nhan cho tat ca" << endl;
+	cout << "2. Gui tin nhan" << endl;
+	cout << "3. Xem hop thu den" << endl;
+	cout << "4. Xuat list sach" << endl;
+	cout << "5. Xoa sach" << endl;
+	cout << "6. Tim sach" << endl;
+	cout << "7. Them sach" << endl;
+	cout << "8. Xoa tat ca sach" << endl;
+	cout << "9. Dang xuat" << endl;
+	cout << "10. Blacklist" << endl;
 	cout << "0. Thoat" << endl;
 }
 
@@ -42,6 +46,8 @@ void Menu::publisherMenu()
 	cout << "2. Them sach" << endl;
 	cout << "3. Xoa sach" << endl;
 	cout << "4. Sua gia" << endl;
-	cout << "5. Dang xuat" << endl;
+	cout << "5. Gui tin nhan" << endl;
+	cout << "6. Xem hop thu" << endl;
+	cout << "7. Dang xuat" << endl;
 	cout << "0. Thoat" << endl;
 }
