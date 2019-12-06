@@ -152,22 +152,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="18120256.cpp" />
+    <ClCompile Include="Account.cpp" />
+    <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Author.cpp" />
     <ClCompile Include="BookStore.cpp" />
+    <ClCompile Include="Date.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="HoaDon.cpp" />
     <ClCompile Include="ListSach.cpp" />
     <ClCompile Include="MangHoaDon.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Messager.cpp" />
+    <ClCompile Include="NXB.cpp" />
     <ClCompile Include="Sach.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
+    <ClInclude Include="Admin.h" />
+    <ClInclude Include="Author.h" />
     <ClInclude Include="BookStore.h" />
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="HoaDon.h" />
     <ClInclude Include="ListSach.h" />
     <ClInclude Include="MangHoaDon.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Messager.h" />
+    <ClInclude Include="NXB.h" />
     <ClInclude Include="Sach.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

@@ -5,32 +5,32 @@
 #include "Guest.h"
 #include "MangHoaDon.h"
 #include "HoaDon.h"
+#include "Account.h"
 
 class User :
-	public Guest
+	public Account
 {
 private:
-	string mName;
-	string mPass;
 	int mAge;
 	MangHoaDon mHoadon;
-	int mType = 1;
 public:
 	User();
+	User(string, string, string, int);
 	virtual ~User();
 
-	void setName(string&);
-	void setPass(string&);
+	
 	void setAge(const int&);
-	void setType(const int&);
-	string getName();
-	string getPass();
+
 	int getAge();
-	int getType();
+	friend ostream& operator<<(ostream& out, User scr);
 
 	void muaSach(ListSach&);
 	void capNhatDonHang();
 	void inDanhSachHoaDon();
+	void loadBill(ListSach& Ke);
+	void exportBill();
+
+	virtual void printInformation();
 };
 
 
@@ -38,6 +38,3 @@ public:
 
 
 #endif // !__USER_H__
-
-
-

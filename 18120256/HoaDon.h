@@ -9,10 +9,11 @@ using namespace std;
 class HoaDon
 {
 private:
-	Sach mSach;
+
 	int mSoLuong = -1;
 	int mTien;
 public:
+	Sach mSach;
 	HoaDon();
 	virtual ~HoaDon();
 
@@ -20,6 +21,7 @@ public:
 	int getTien();
 	void setSoLuong(int);
 	void setTien(int);
+	void setBook(Sach);
 	void taoHoaDon(ListSach, string tensach, int);
 	void taoHoaDon(ListSach);
 	friend ostream& operator<<(ostream& out, HoaDon& l);

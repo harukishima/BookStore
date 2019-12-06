@@ -2,7 +2,12 @@
 #define __MANGHOADON_H__
 
 #include"HoaDon.h"
+#include"ListSach.h"
 #include<vector>
+#include<sstream>
+#include<fstream>
+#include<iostream>
+#include<string>
 using namespace std;
 
 class MangHoaDon
@@ -21,6 +26,9 @@ public:
 	void suaHoaDon();
 	void capNhatTongTien();
 	void xoaTatCaHoaDon();
+	void loadBill(const string&, ListSach& Ke);
+	void exportBill(const string&);
+	HoaDon splitBillLine(string line, char delim, ListSach& Ke);
 };
 
 

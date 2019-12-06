@@ -38,9 +38,27 @@ void ListSach::fXuatListSach()
 			cout << i + 1 << endl;
 			cout << "ID: " << LIST[i].fGetID() << endl;
 			cout << "Ten sach: " << LIST[i].fGetName() << endl;
-			cout << "Gia sach: " << LIST[i].fGetGia() << endl << endl;
+			cout << "Gia sach: " << LIST[i].fGetGia() << endl;
+			cout << "NXB: " << LIST[i].fGetNXB() << endl;
+			cout << "Tac gia: " << LIST[i].fGetTacGia() << endl << endl;
 		}
 	}
+}
+
+void ListSach::fXuatFileSach(const string& path)
+{
+	ofstream file(path);
+	if (!file.is_open())
+	{
+		cout << "Khong xuat duoc file sach" << endl;
+		return;
+	}
+	vector<Sach>::iterator it;
+	for (it = LIST.begin(); it != LIST.end(); it++)
+	{
+		file << (*it) << endl;
+	}
+	file.close();
 }
 
 void ListSach::fTimSach(string tensach)
@@ -106,17 +124,17 @@ void ListSach::fTim1Sach(int it)
 	}
 }
 
-Sach ListSach::findBook(string ten)
+Sach* ListSach::findBook(string ten)
 {
 	vector<Sach>::iterator it;
 	int count = 0;
-	Sach tmp;
+	Sach *tmp = NULL;
 	for (it = LIST.begin(); it != LIST.end(); ++it)
 	{
 		if (it->fGetName() == ten)
 		{
 			count++;
-			tmp = *it;
+			tmp = &(*it);
 		}
 	}
 	if (count > 1)
@@ -131,8 +149,22 @@ Sach ListSach::findBook(string ten)
 			if (it->fGetID() == ms)
 			{
 				count++;
-				tmp = *it;
+				tmp = &(*it);
 			}
+		}
+	}
+	return tmp;
+}
+
+Sach* ListSach::findBookBaseOnID(string id)
+{
+	vector<Sach>::iterator it;
+	Sach* tmp = NULL;
+	for (it = LIST.begin(); it != LIST.end(); ++it)
+	{
+		if (it->fGetID() == id)
+		{
+			tmp = &(*it);
 		}
 	}
 	return tmp;
@@ -154,4 +186,21 @@ void ListSach::fXoaTatCa()
 void ListSach::fThemSach(Sach s)
 {
 	LIST.push_back(s);
+}
+
+void ListSach::themSach()
+{
+	string ms, ten; int gia;
+	cout << "Nhap MS: ";
+	cin >> ms;
+	cin.ignore();
+	cout << "Nhap ten sach: ";
+	getline(cin, ten);
+	cout << "Nhap so luong: ";
+	cin >> gia;
+	Sach tmp;
+	tmp.fSetID(ms);
+	tmp.fSetName(ten);
+	tmp.fSetGia(gia);
+	fThemSach(tmp);
 }

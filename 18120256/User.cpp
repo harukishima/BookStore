@@ -4,6 +4,16 @@
 
 User::User()
 {
+	mType = 1;
+}
+
+User::User(string user, string pass, string name, int age)
+{
+	mType = 1;
+	mUsername = user;
+	mPass = pass;
+	mName = name;
+	mAge = age;
 }
 
 
@@ -11,45 +21,21 @@ User::~User()
 {
 }
 
-void User::setName(string& name)
-{
-	mName = name;
-}
 
-void User::setPass(string& pass)
-{
-	mPass = pass;
-}
 
 void User::setAge(const int& age)
 {
 	mAge = age;
 }
 
-void User::setType(const int& type)
-{
-	mType = type;
-}
 
-string User::getName()
-{
-	return mName;
-}
-
-string User::getPass()
-{
-	return mPass;
-}
 
 int User::getAge()
 {
 	return mAge;
 }
 
-int User::getType()
-{
-	return mType;
-}
+
 
 void User::muaSach(ListSach& ke)
 {
@@ -84,4 +70,29 @@ void User::capNhatDonHang()
 void User::inDanhSachHoaDon()
 {
 	mHoadon.inMHoaDon();
+}
+
+void User::loadBill(ListSach& Ke)
+{ 
+	string path = "Bill\\" + mUsername + ".csv";
+	mHoadon.loadBill(path, Ke);
+}
+
+void User::exportBill()
+{
+	string path = "Bill\\" + mUsername + ".csv";
+	mHoadon.exportBill(path);
+}
+
+void User::printInformation()
+{
+	cout << "Ten dang nhap: " << mUsername << endl;
+	cout << "Ten: " << mName << endl;
+	cout << "Tuoi: " << mAge << endl;
+}
+
+ostream& operator<<(ostream& out, User scr)
+{
+	out << scr.mType << "," << scr.mUsername << "," << scr.mPass << "," << scr.mName << "," << scr.mAge;
+	return out;
 }

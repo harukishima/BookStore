@@ -102,3 +102,46 @@ void MangHoaDon::xoaTatCaHoaDon()
 	mHoaDon.clear();
 	mTongTien = 0;
 }
+
+void MangHoaDon::loadBill(const string& path, ListSach& Ke)
+{
+	ifstream file(path);
+	if (!file.is_open())
+	{
+		//cout << "Khong load duoc hoa don" << endl;
+		return;
+	}
+	string line;
+	while (getline(file, line))
+	{
+		HoaDon newBill = splitBillLine(line, ',', Ke);
+		themHoaDon(newBill);
+	}
+	file.close();
+}
+
+void MangHoaDon::exportBill(const string& path)
+{
+	ofstream file(path);
+	if (!file.is_open()) return;
+	vector<HoaDon>::iterator it;
+	for (it = mHoaDon.begin(); it != mHoaDon.end(); it++)
+	{
+		file << it->mSach.fGetID() << "," << it->getSoLuong() << endl;
+	}
+	file.close();
+}
+
+HoaDon MangHoaDon::splitBillLine(string line, char delim, ListSach& Ke)
+{
+	stringstream str(line);
+	string tmp;
+	getline(str, line, delim);
+	Sach newBook = *Ke.findBookBaseOnID(tmp);
+	HoaDon newBill;
+	newBill.setBook(newBook);
+	getline(str, line, delim);
+	newBill.setSoLuong(stod(tmp));
+	newBill.setTien(newBook.fGetGia() * newBill.getSoLuong());
+	return newBill;
+}

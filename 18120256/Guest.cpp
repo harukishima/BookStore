@@ -17,12 +17,17 @@ void Guest::timSach(ListSach& ke)
 	cout << "Nhap ten sach: ";
 	string tensach;
 	getline(cin, tensach);
-	Sach tmp = ke.findBook(tensach);
-	if (tmp.fGetID() == "") {
+	Sach *tmp = ke.findBook(tensach);
+	if (tmp == NULL)
+	{
+		cout << "Khong tim thay" << endl;
+		return;
+	}
+	if (tmp->fGetID() == "") {
 		cout << "Khong tim thay" << endl;
 	}
 	else
 	{
-		cout << tmp;
+		cout << (*tmp);
 	}
 }
