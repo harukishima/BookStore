@@ -15,10 +15,13 @@ class MangHoaDon
 private:
 	vector<HoaDon> mHoaDon;
 	int mTongTien;
+	float discount = 0;
 public:
 	MangHoaDon();
 	virtual ~MangHoaDon();
 	int getTongTien();
+	void setDiscount(float);
+	float getDiscount();
 	void themHoaDon(HoaDon&);
 	void themHoaDon();
 	void inMHoaDon();

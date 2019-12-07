@@ -83,6 +83,42 @@ void Admin::blacklist(ListSach& ke, list<NXB>& pList, list<Author>& aList)
 	cout << "An thanh cong" << endl;
 }
 
+void Admin::discountManagement(Discount& dis)
+{
+	cout << "1. Tre em (0-10)" << endl;
+	cout << "2. Vi thanh nien (0-17)" << endl;
+	cout << "3. Nguoi lon (17-59)" << endl;
+	cout << "4. Nguoi gia (60 tro len)" << endl;
+	int cmd;
+	cin >> cmd;
+	cout << "Nhap khuyen mai (0-100): ";
+	float discount;
+	cin >> discount;
+	if (discount < 0 || discount > 100)
+	{
+		cout << "Khong hop le" << endl;
+		return;
+	}
+	discount /= 100;
+	switch (cmd)
+	{
+	case 1:
+		dis.child = discount;
+		break;
+	case 2:
+		dis.teen = discount;
+		break;
+	case 3:
+		dis.adult = discount;
+		break;
+	case 4:
+		dis.elder = discount;
+		break;
+	default:
+		break;
+	}
+}
+
 void Admin::printInformation()
 {
 	cout << "Ten dang nhap: " << mUsername << endl;

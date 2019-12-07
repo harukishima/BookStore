@@ -12,6 +12,7 @@ BookStore::BookStore()
 	loadPublisherList("nxb.csv");
 	loadAuthorList("author.csv");
 	loadBookToPointerList();
+	discount.loadDiscountInfor("discount.csv");
 	list<User>::iterator it;
 	for (it = uList.begin(); it != uList.end(); it++)
 	{
@@ -26,6 +27,7 @@ BookStore::~BookStore()
 	exportPublisherList("nxb.csv");
 	exportAuthorList("author.csv");
 	Ke1.fXuatFileSach("book.csv");
+	discount.exportDiscountInfor("discount.csv");
 	list<User>::iterator it;
 	for (it = uList.begin(); it != uList.end(); it++)
 	{
@@ -517,7 +519,7 @@ void BookStore::adminFunction(int cmd)
 	switch (cmd)
 	{
 	case 1:
-		sendMessageToAll(curAd->getUsername());
+		dangXuat();
 		break;
 	case 2:
 		cout << "Nhap ten nguoi nhan: ";
@@ -553,10 +555,13 @@ void BookStore::adminFunction(int cmd)
 		Ke1.fXoaTatCa();
 		break;
 	case 9:
-		dangXuat();
+		curAd->blacklist(Ke1, pList, aList);
 		break;
 	case 10:
-		curAd->blacklist(Ke1, pList, aList);
+		sendMessageToAll(curAd->getUsername());
+		break;
+	case 11:
+		curAd->discountManagement(discount);
 		break;
 	default:
 		isRun = false;
@@ -642,6 +647,18 @@ void BookStore::authorFunction(int cmd)
 	}
 }
 
+float BookStore::applyDiscount(const int& tuoi, const Discount& dis)
+{
+	if (tuoi <= 10)
+		return dis.child;
+	else if (tuoi < 18)
+		return dis.teen;
+	else if (tuoi < 60)
+		return dis.adult;
+	else
+		return dis.elder;
+}
+
 void BookStore::dangNhap()
 {
 	string user, pass;
@@ -675,6 +692,7 @@ void BookStore::dangNhap()
 				cout << "Dang nhap thanh cong" << endl;
 				isLogged = true;
 				curU = &(*itU);
+				curU->setDiscount(applyDiscount(curU->getAge(), discount));
 			}
 			else
 			{

@@ -157,6 +157,7 @@
     <ClCompile Include="Author.cpp" />
     <ClCompile Include="BookStore.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Discount.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="HoaDon.cpp" />
     <ClCompile Include="ListSach.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Author.h" />
     <ClInclude Include="BookStore.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="Discount.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="HoaDon.h" />

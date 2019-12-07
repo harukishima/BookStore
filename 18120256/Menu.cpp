@@ -27,7 +27,7 @@ void Menu::userMenu()
 
 void Menu::adminMenu()
 {
-	cout << "1. Gui tin nhan cho tat ca" << endl;
+	cout << "1. Dang xuat" << endl;
 	cout << "2. Gui tin nhan" << endl;
 	cout << "3. Xem hop thu den" << endl;
 	cout << "4. Xuat list sach" << endl;
@@ -35,8 +35,9 @@ void Menu::adminMenu()
 	cout << "6. Tim sach" << endl;
 	cout << "7. Them sach" << endl;
 	cout << "8. Xoa tat ca sach" << endl;
-	cout << "9. Dang xuat" << endl;
-	cout << "10. Blacklist" << endl;
+	cout << "9. Blacklist" << endl;
+	cout << "10. Gui tin nhan cho tat ca" << endl;
+	cout << "11. Quan li khuyen mai" << endl;
 	cout << "0. Thoat" << endl;
 }
 

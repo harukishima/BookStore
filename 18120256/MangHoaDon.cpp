@@ -16,6 +16,16 @@ int MangHoaDon::getTongTien()
 	return mTongTien;
 }
 
+void MangHoaDon::setDiscount(float dis)
+{
+	discount = dis;
+}
+
+float MangHoaDon::getDiscount()
+{
+	return discount;
+}
+
 void MangHoaDon::themHoaDon(HoaDon& hd)
 {
 	if (hd.getTien() == -1)
@@ -64,6 +74,7 @@ void MangHoaDon::xoaHoaDon()
 			break;
 		}
 	}
+	capNhatTongTien();
 }
 
 void MangHoaDon::suaHoaDon()
@@ -94,7 +105,7 @@ void MangHoaDon::capNhatTongTien()
 	{
 		S += it->getTien();
 	}
-	mTongTien = S;
+	mTongTien = S - discount * S;
 }
 
 void MangHoaDon::xoaTatCaHoaDon()

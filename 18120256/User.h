@@ -18,7 +18,7 @@ public:
 	User(string, string, string, int);
 	virtual ~User();
 
-	
+	void setDiscount(float);
 	void setAge(const int&);
 
 	int getAge();

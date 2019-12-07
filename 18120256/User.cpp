@@ -23,6 +23,11 @@ User::~User()
 
 
 
+void User::setDiscount(float dis)
+{
+	mHoadon.setDiscount(dis);
+}
+
 void User::setAge(const int& age)
 {
 	mAge = age;

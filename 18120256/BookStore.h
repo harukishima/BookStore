@@ -7,6 +7,7 @@
 #include"User.h"
 #include"Account.h"
 #include"Author.h"
+#include"Discount.h"
 #include<fstream>
 #include<vector>
 #include<sstream>
@@ -31,6 +32,7 @@ private:
 	Author* curA = NULL;
 	Admin* curAd = NULL;
 	Guest guest;
+	Discount discount;
 public:
 	BookStore();
 	virtual ~BookStore();
@@ -61,6 +63,7 @@ public:
 	void adminFunction(int);
 	void publisherFunction(int);
 	void authorFunction(int);
+	float applyDiscount(const int& tuoi, const Discount& dis);
 	void dangNhap();
 	void dangKi();
 	void dangXuat();

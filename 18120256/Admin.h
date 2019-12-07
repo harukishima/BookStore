@@ -6,6 +6,7 @@
 #include "User.h"
 #include "NXB.h"
 #include "Author.h"
+#include "Discount.h"
 #include <list>
 
 class Admin :
@@ -24,6 +25,7 @@ public:
 
 	bool isNameExist(const string&, list<NXB>&, list<Author>&);
 	void blacklist(ListSach&, list<NXB>& pList, list<Author>& aList);
+	void discountManagement(Discount& dis);
 
 	friend ostream& operator<<(ostream& out, Admin scr);
 
