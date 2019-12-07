@@ -44,12 +44,13 @@ void MangHoaDon::themHoaDon()
 void MangHoaDon::inMHoaDon()
 {
 	if (mHoaDon.empty()) return;
+	capNhatTongTien();
 	cout << "STT\tTen sach\tDonGia\tSo luong\tTong\n";
 	for (int i = 0; i < mHoaDon.size(); i++)
 	{
 		cout << i+1 << "\t" << mHoaDon[i] << endl;
 	}
-	cout << "Tong tien: \t\t\t\t" << mTongTien;
+	cout << "Tong tien: \t\t\t\t" << mTongTien << endl;
 }
 
 void MangHoaDon::xoaHoaDon()
@@ -147,11 +148,11 @@ HoaDon MangHoaDon::splitBillLine(string line, char delim, ListSach& Ke)
 {
 	stringstream str(line);
 	string tmp;
-	getline(str, line, delim);
+	getline(str, tmp, delim);
 	Sach newBook = *Ke.findBookBaseOnID(tmp);
 	HoaDon newBill;
 	newBill.setBook(newBook);
-	getline(str, line, delim);
+	getline(str, tmp, delim);
 	newBill.setSoLuong(stod(tmp));
 	newBill.setTien(newBook.fGetGia() * newBill.getSoLuong());
 	return newBill;
