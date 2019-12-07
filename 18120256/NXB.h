@@ -17,6 +17,7 @@ public:
 	
 	friend ostream& operator<< (ostream& out, NXB scr);
 	void inDanhSach();
+	void anSach(bool hid);
 
 	virtual void printInformation();
 };

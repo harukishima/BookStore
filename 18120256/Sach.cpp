@@ -23,6 +23,9 @@ Sach::Sach(const Sach& a)
 	this->GIASACH = a.GIASACH;
 	this->NXB = a.NXB;
 	this->TACGIA = a.TACGIA;
+	this->hidUser = a.hidUser;
+	this->hidAuthor = a.hidAuthor;
+	this->hidPublisher = a.hidPublisher;
 	for (int i = 0; i < a.blackList.size(); i++)
 	{
 		this->blackList[i] = a.blackList[i];
@@ -45,6 +48,9 @@ Sach& Sach::operator=(const Sach& a)
 		this->GIASACH = a.GIASACH;
 		this->TACGIA = a.TACGIA;
 		this->NXB = a.NXB;
+		this->hidUser = a.hidUser;
+		this->hidAuthor = a.hidAuthor;
+		this->hidPublisher = a.hidPublisher;
 		for (int i = 0; i < a.blackList.size(); i++)
 		{
 			this->blackList[i] = a.blackList[i];
@@ -99,6 +105,8 @@ void Sach::fNhapSach()
 	cout << "Gia sach: "; cin >> gia;
 	fSetID(id); fSetName(ten); fSetGia(gia);
 }
+
+
 
 string Sach::fGetID()
 {
@@ -159,7 +167,7 @@ bool Sach::checkBlackList(const string& name)
 
 ostream& operator<<(ostream& out, Sach s)
 {
-	out << s.fGetID() << "," << s.fGetName() << "," << s.fGetGia() << "," << s.fGetNXB() << "," << s.fGetTacGia();
+	out << s.fGetID() << "," << s.fGetName() << "," << s.fGetGia() << "," << s.fGetNXB() << "," << s.fGetTacGia() << "," << s.hidUser << "," << s.hidAuthor << "," << s.hidPublisher;
 	vector<string>::iterator it;
 	for (it = s.blackList.begin(); it != s.blackList.end(); it++)
 	{

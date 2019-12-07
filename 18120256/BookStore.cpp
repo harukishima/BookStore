@@ -353,6 +353,12 @@ Sach BookStore::splitBookLine(string line, char delim)
 	s.fSetNXB(tmp);
 	getline(str, tmp, delim);
 	s.fSetTacGia(tmp);
+	getline(str, tmp, delim);
+	s.hidUser = stoi(tmp);
+	getline(str, tmp, delim);
+	s.hidAuthor = stoi(tmp);
+	getline(str, tmp, delim);
+	s.hidPublisher = stoi(tmp);
 	while (getline(str, tmp, delim))
 	{
 		s.blackList.push_back(tmp);
@@ -479,7 +485,7 @@ void BookStore::userFunction(int cmd)
 	switch (cmd)
 	{
 	case 1:
-		curU->muaSach(Ke1);
+		dangXuat();
 		break;
 	case 2:
 		curU->capNhatDonHang();
@@ -504,7 +510,10 @@ void BookStore::userFunction(int cmd)
 		curU->viewInbox();
 		break;
 	case 7:
-		dangXuat();
+		curU->muaSach(Ke1);
+		break;
+	case 8:
+		curU->printBook(Ke1);
 		break;
 	default:
 		isRun = false;
@@ -563,6 +572,12 @@ void BookStore::adminFunction(int cmd)
 	case 11:
 		curAd->discountManagement(discount);
 		break;
+	case 12:
+		curAd->lockBook(Ke1, true);
+		break;
+	case 13:
+		curAd->lockBook(Ke1, false);
+		break;
 	default:
 		isRun = false;
 		break;
@@ -575,7 +590,7 @@ void BookStore::publisherFunction(int cmd)
 	switch (cmd)
 	{
 	case 1:
-		curP->inDanhSach();
+		dangXuat();
 		break;
 	case 2:
 		curP->themSach(Ke1);
@@ -600,7 +615,13 @@ void BookStore::publisherFunction(int cmd)
 		curP->viewInbox();
 		break;
 	case 7:
-		dangXuat();
+		curP->inDanhSach();
+		break;
+	case 8:
+		curP->anSach(true);
+		break;
+	case 9:
+		curP->anSach(false);
 		break;
 	default:
 		isRun = false;
@@ -614,7 +635,7 @@ void BookStore::authorFunction(int cmd)
 	switch (cmd)
 	{
 	case 1:
-		curA->inDanhSach();
+		dangXuat();
 		break;
 	case 2:
 		curA->themSach(Ke1);
@@ -639,7 +660,13 @@ void BookStore::authorFunction(int cmd)
 		curA->viewInbox();
 		break;
 	case 7:
-		dangXuat();
+		curA->inDanhSach();
+		break;
+	case 8:
+		curA->anSach(true);
+		break;
+	case 9:
+		curA->anSach(false);
 		break;
 	default:
 		isRun = false;

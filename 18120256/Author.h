@@ -20,6 +20,7 @@ public:
 	void inDanhSach();
 
 	friend ostream& operator<<(ostream& out, Author scr);
+	void anSach(bool hid);
 
 	virtual void printInformation();
 };

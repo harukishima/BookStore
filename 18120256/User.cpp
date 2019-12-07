@@ -42,6 +42,25 @@ int User::getAge()
 
 
 
+void User::printBook(ListSach& Ke)
+{
+	if (!Ke.LIST.empty())
+	{
+		cout << "-----XUAT LIST SACH-----" << endl;
+		for (int i = 0; i < Ke.LIST.size(); i++)
+		{
+			if (Ke.LIST[i].hidUser)
+				continue;
+			//cout << i + 1 << endl;
+			cout << "ID: " << Ke.LIST[i].fGetID() << endl;
+			cout << "Ten sach: " << Ke.LIST[i].fGetName() << endl;
+			cout << "Gia sach: " << Ke.LIST[i].fGetGia() << endl;
+			cout << "NXB: " << Ke.LIST[i].fGetNXB() << endl;
+			cout << "Tac gia: " << Ke.LIST[i].fGetTacGia() << endl << endl;
+		}
+	}
+}
+
 void User::muaSach(ListSach& ke)
 {
 	HoaDon tmp;

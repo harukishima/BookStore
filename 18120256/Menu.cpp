@@ -15,13 +15,14 @@ void Menu::guestMenu()
 
 void Menu::userMenu()
 {
-	cout << "1. Mua sach" << endl;
+	cout << "1. Dang xuat" << endl; 
 	cout << "2. Cap nhat don hang" << endl;
 	cout << "3. Tim sach" << endl;
 	cout << "4. In danh sach hoa don" << endl;
 	cout << "5. Gui tin nhan" << endl;
 	cout << "6. Xem hop thu" << endl;
-	cout << "7. Dang xuat" << endl;
+	cout << "7. Mua sach" << endl;
+	cout << "8. Xem sach" << endl;
 	cout << "0. Thoat" << endl;
 }
 
@@ -38,17 +39,21 @@ void Menu::adminMenu()
 	cout << "9. Blacklist" << endl;
 	cout << "10. Gui tin nhan cho tat ca" << endl;
 	cout << "11. Quan li khuyen mai" << endl;
+	cout << "12. Khoa sach" << endl;
+	cout << "13. Mo khoa sach" << endl;
 	cout << "0. Thoat" << endl;
 }
 
 void Menu::publisherMenu()
 {
-	cout << "1. Xem sach" << endl;
+	cout << "1. Dang xuat" << endl;
 	cout << "2. Them sach" << endl;
 	cout << "3. Xoa sach" << endl;
 	cout << "4. Sua gia" << endl;
 	cout << "5. Gui tin nhan" << endl;
 	cout << "6. Xem hop thu" << endl;
-	cout << "7. Dang xuat" << endl;
+	cout << "7. Xem sach" << endl;
+	cout << "8. Khoa sach" << endl;
+	cout << "9. Mo khoa sach" << endl;
 	cout << "0. Thoat" << endl;
 }

@@ -22,6 +22,11 @@ void NXB::themSach(ListSach& Ke)
 	{
 		return;
 	}
+	if (tmp->hidPublisher && tmp->fGetNXB() != mName)
+	{
+		cout << "Khong the them" << endl;
+		return;
+	}
 	list.push_back(tmp);
 	tmp->fSetNXB(this->getName());
 }
@@ -96,6 +101,32 @@ void NXB::inDanhSach()
 	{
 		(*it)->inSach();
 	}
+}
+
+void NXB::anSach(bool hid)
+{
+	cout << "Nhap ma so sach: ";
+	string id;
+	cin >> id;
+	vector<Sach*>::iterator it;
+	for (it = list.begin(); it != list.end(); it++)
+	{
+		if ((*it)->fGetID() == id)
+		{
+			if (hid)
+			{
+				(*it)->hidAuthor = (*it)->hidUser = true;
+				cout << "Khoa thanh cong" << endl;
+			}
+			else
+			{
+				(*it)->hidAuthor = (*it)->hidUser = false;
+				cout << "Mo khoa thanh cong" << endl;
+			}
+			return;
+		}
+	}
+	cout << "Khong tim thay ma so" << endl;
 }
 
 void NXB::printInformation()

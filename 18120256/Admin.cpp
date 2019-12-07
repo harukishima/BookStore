@@ -119,6 +119,42 @@ void Admin::discountManagement(Discount& dis)
 	}
 }
 
+void Admin::lockBook(ListSach& Ke, bool hid)
+{
+	cout << "Nhap ma so: ";
+	string id;
+	cin >> id;
+	cout << "1. User" << endl;
+	cout << "2. Nha xuat ban" << endl;
+	cout << "3. Tac gia" << endl;
+	cout << "Chon: ";
+	int cmd;
+	cin >> cmd;
+	vector<Sach>::iterator it;
+	for (it = Ke.LIST.begin(); it != Ke.LIST.end(); it++)
+	{
+		if (it->fGetID() == id)
+		{
+			switch (cmd)
+			{
+			case 1:
+				it->hidUser = hid;
+				break;
+			case 2:
+				it->hidPublisher = hid;
+				break;
+			case 3:
+				it->hidAuthor = hid;
+				break;
+			default:
+				break;
+			}
+			return;
+		}
+	}
+	cout << "Khong tim thay ma so" << endl;
+}
+
 void Admin::printInformation()
 {
 	cout << "Ten dang nhap: " << mUsername << endl;

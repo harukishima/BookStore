@@ -24,6 +24,7 @@ public:
 	int getAge();
 	friend ostream& operator<<(ostream& out, User scr);
 
+	void printBook(ListSach&);
 	void muaSach(ListSach&);
 	void capNhatDonHang();
 	void inDanhSachHoaDon();

@@ -15,6 +15,11 @@ void Author::themSach(ListSach& Ke)
 	{
 		return;
 	}
+	if (tmp->hidAuthor && tmp->fGetTacGia() != mName)
+	{
+		cout << "Khong the them" << endl;
+		return;
+	}
 	list.push_back(tmp);
 	tmp->fSetTacGia(this->getName());
 }
@@ -87,6 +92,32 @@ void Author::inDanhSach()
 	{
 		(*it)->inSach();
 	}
+}
+
+void Author::anSach(bool hid)
+{
+	cout << "Nhap ma so sach: ";
+	string id;
+	cin >> id;
+	vector<Sach*>::iterator it;
+	for (it = list.begin(); it != list.end(); it++)
+	{
+		if ((*it)->fGetID() == id)
+		{
+			if (hid)
+			{
+				(*it)->hidPublisher = (*it)->hidUser = true;
+				cout << "Khoa thanh cong" << endl;
+			}
+			else
+			{
+				(*it)->hidPublisher = (*it)->hidUser = false;
+				cout << "Mo khoa thanh cong" << endl;
+			}
+			return;
+		}
+	}
+	cout << "Khong tim thay ma so" << endl;
 }
 
 void Author::printInformation()
